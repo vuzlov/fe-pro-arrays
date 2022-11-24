@@ -21,7 +21,7 @@ function map(array, callback) {
   const mappedArr =[];
 
      for (let i=0; i < array.length ; i++) {
-      const result = callback(array[i], i, arr);
+      const result = callback(array[i], i, array);
 
       mappedArr.push(result);
      }
@@ -37,15 +37,14 @@ return mappedArr;
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function filter(array, callback) {
-const filteredArr =[];
+const filteredArr = [];
 
 for (let i=0; i < array.length ; i++) {
 
   if (callback(array[i], i, array)) {
-    filteredArr.push(array[i]);
+    filteredArr.push(array[i])}
   }
-}
-return filteredArr;
+  return filteredArr;
 }
 
 /* Функция принимает в себе первым аргументом массив, вторым функцию которая будет вызываться для каждого элемента массива, 3 аргумент изначальный вариант
@@ -61,11 +60,10 @@ function reduce(array, callback, initialValue) {
 
   for (let i = 0; array.length > i; i++) {
 
-    res = callback(initialValue, array[i], i, array);
+    initialValue = callback(initialValue, array[i], i, array);
 
-   }
-
-   return res
+  }
+   return initialValue
 
 }
 
